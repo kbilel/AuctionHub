@@ -15,7 +15,9 @@ public class Authentification extends JFrame {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		System.out.println();
 		EventQueue.invokeLater(new Runnable() {
+			
 			public void run() {
 				try {
 					Authentification frame = new Authentification();
