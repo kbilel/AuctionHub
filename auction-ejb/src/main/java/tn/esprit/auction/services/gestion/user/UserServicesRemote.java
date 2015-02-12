@@ -1,10 +1,20 @@
 package tn.esprit.auction.services.gestion.user;
 
+import java.util.List;
+
 import javax.ejb.Remote;
-import javax.xml.registry.infomodel.User;
+
+
+
+import tn.esprit.auction.domain.User;
 
 @Remote
 public interface UserServicesRemote {
-	boolean addUser(User user);
-	boolean removeUser(User user);
+	Boolean addUser(User user );
+	Boolean updateUser(User user);
+	Boolean deleteUser(User user);
+	User findUserById(Integer idUser);
+	List<User>findAllUsers();
+	User authentificate(String login,String pwd);
+	
 }
