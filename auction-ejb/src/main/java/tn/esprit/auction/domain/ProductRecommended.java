@@ -3,6 +3,7 @@ package tn.esprit.auction.domain;
 import java.io.Serializable;
 import java.lang.Integer;
 import java.lang.String;
+
 import javax.persistence.*;
 
 /**
@@ -24,6 +25,8 @@ public class ProductRecommended implements Serializable {
 		super();
 	}   
 	@Id    
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+
 	public Integer getId() {
 		return this.id;
 	}

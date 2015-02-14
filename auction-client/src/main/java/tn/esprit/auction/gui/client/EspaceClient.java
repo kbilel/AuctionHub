@@ -6,10 +6,13 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JTextField;
 
 public class EspaceClient extends JFrame {
 
 	private JPanel contentPane;
+	private JTextField textField;
+	private JTextField textField_1;
 
 	/**
 	 * Launch the application.
@@ -37,6 +40,14 @@ public class EspaceClient extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		
+		textField = new JTextField();
+		contentPane.add(textField, BorderLayout.CENTER);
+		textField.setColumns(10);
+		
+		textField_1 = new JTextField();
+		contentPane.add(textField_1, BorderLayout.NORTH);
+		textField_1.setColumns(10);
 	}
 
 }

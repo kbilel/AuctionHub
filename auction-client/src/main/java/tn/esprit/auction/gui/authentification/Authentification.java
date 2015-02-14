@@ -17,9 +17,11 @@ import javax.swing.border.LineBorder;
 
 import tn.esprit.auction.delegate.GestionUserDelegate;
 import tn.esprit.auction.domain.Client;
+import tn.esprit.auction.domain.Manager;
 import tn.esprit.auction.domain.User;
 import tn.esprit.auction.gui.authentification.Authentification;
 import tn.esprit.auction.gui.client.EspaceClient;
+import tn.esprit.auction.gui.manager.EspaceManager;
 
 
 public class Authentification extends JFrame {
@@ -89,12 +91,17 @@ public class Authentification extends JFrame {
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				User user=GestionUserDelegate.doAuthentificate(login.getText(), pwd.getText());
+				System.out.println("pwd"+user.getPassword());
 				if(user!=null){
-					
-					
+				
 					if(user instanceof Client){
 						EspaceClient client=new EspaceClient();
 						client.setVisible(true);
+						
+					}else
+						if(user instanceof Manager){
+						EspaceManager manager=new EspaceManager();
+						manager.setVisible(true);
 					}
 				}
 				

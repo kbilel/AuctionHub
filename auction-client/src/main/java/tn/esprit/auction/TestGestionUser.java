@@ -1,4 +1,4 @@
-package tn.esprit.auction.user;
+package tn.esprit.auction;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -17,7 +17,7 @@ public class TestGestionUser {
 	public static void doAddUser(UserServicesRemote remote){
 
 		User user=new User();
-		user.setUserName("foulen");
+		user.setUserName("foulen4");
 		if(remote.addUser(user)){
 			System.out.println("OK");
 		}
@@ -27,7 +27,7 @@ public class TestGestionUser {
 	}
 	public static void doUpdateUser(UserServicesRemote remote){
 
-		User user=remote.findUserById(1);
+		User user=remote.findUserById(2);
 		user.setUserName("foulen1");
 		if(remote.updateUser(user)){
 			System.out.println("OK");
@@ -39,12 +39,13 @@ public class TestGestionUser {
 	public static void doDeleteUser(UserServicesRemote remote){
 
 		User user=remote.findUserById(1);
-		
+		if (user ==null)
+System.out.println("user null");
 		if(remote.deleteUser(user)){
 			System.out.println("OK");
 		}
 		else
-			System.out.println("Erreur ...");
+			System.out.println("Erreur ...delete");
 
 	}
 	public static void main(String[] args) {
@@ -57,8 +58,9 @@ public class TestGestionUser {
 		System.out.println("erreur jndi ... ");
 			e.printStackTrace();
 		}
+		
 doAddUser(remote);
 		//doUpdateUser(remote);
-		//doDeleteUser(remote);
+	//doDeleteUser(remote);
 	}
 }

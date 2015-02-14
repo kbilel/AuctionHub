@@ -28,6 +28,8 @@ public class Answer implements Serializable {
 		super();
 	}   
 	@Id    
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+
 	public Integer getId() {
 		return this.id;
 	}

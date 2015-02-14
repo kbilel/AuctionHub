@@ -27,10 +27,13 @@ public class UserServices implements UserServicesRemote, UserServicesLocal {
 	public Boolean addUser(User user) {
 		try {
 			entityManager.persist(user);
+			System.out.println("ok ejb");
 			
 			return true;
 		} catch (Exception e) {
+			System.out.println("erreur ejb");
 			return false;
+			
 		}
 		
 	}
@@ -42,6 +45,7 @@ public class UserServices implements UserServicesRemote, UserServicesLocal {
 			
 			return true;
 		} catch (Exception e) {
+			System.out.println("exception update user");
 			return false;
 		}
 	}
@@ -82,7 +86,7 @@ public class UserServices implements UserServicesRemote, UserServicesLocal {
 		User user=null;
 
 		try {
-			Query query=entityManager.createQuery("select u from User u where u.login=:l and u.pwd=:p");	
+			Query query=entityManager.createQuery("select u from User u where u.userName=:l and u.password=:p");	
 		query.setParameter("l", login).setParameter("p",pwd);
 		user=(User) query.getSingleResult();
 		} catch (Exception e) {

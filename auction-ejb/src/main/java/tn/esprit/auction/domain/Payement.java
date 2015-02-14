@@ -26,7 +26,9 @@ public class Payement implements Serializable {
 	public Payement() {
 		super();
 	}   
-	@Id    
+	@Id  
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+
 	public Integer getId() {
 		return this.id;
 	}

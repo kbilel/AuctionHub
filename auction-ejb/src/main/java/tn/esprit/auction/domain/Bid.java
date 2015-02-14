@@ -34,6 +34,7 @@ public class Bid implements Serializable {
 	public void setBidPK(BidPK bidPK) {
 		this.bidPK = bidPK;
 	}   
+	@Column(name="bid_value")
 	public Integer getBidValue() {
 		return this.bidValue;
 	}

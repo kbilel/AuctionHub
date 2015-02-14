@@ -39,7 +39,8 @@ public class Order implements Serializable {
 
 	public void setOrderPK(OrderPK orderPK) {
 		this.orderPK = orderPK;
-	}   
+	}  
+	@Column(name="id_client")
 	public Client getClient() {
 		return this.client;
 	}
@@ -47,20 +48,23 @@ public class Order implements Serializable {
 	public void setClient(Client client) {
 		this.client = client;
 	}   
+	@Column(name="id_produit")
 	public Product getProduit() {
 		return this.produit;
 	}
 
 	public void setProduit(Product produit) {
 		this.produit = produit;
-	}   
+	} 
+	@Column(name="date_limit")
 	public Date getDateLimit() {
 		return this.dateLimit;
 	}
-
+	
 	public void setDateLimit(Date dateLimit) {
 		this.dateLimit = dateLimit;
 	}   
+	@Column(name="cash_payement")
 	public Boolean getCashPayement() {
 		return this.cashPayement;
 	}

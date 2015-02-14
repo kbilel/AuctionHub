@@ -3,6 +3,7 @@ package tn.esprit.auction.domain;
 import java.io.Serializable;
 import java.lang.Integer;
 import java.lang.String;
+
 import javax.persistence.*;
 
 /**
@@ -11,6 +12,8 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="t_user")
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+
 
 public class User implements Serializable {
 
@@ -28,7 +31,8 @@ public class User implements Serializable {
 	public User() {
 		super();
 	}   
-	@Id    
+	@Id   
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	public Integer getId() {
 		return this.id;
 	}

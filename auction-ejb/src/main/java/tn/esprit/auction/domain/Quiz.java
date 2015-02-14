@@ -17,6 +17,8 @@ public class Quiz implements Serializable {
 
 	   
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+
 	private Integer id;
 	private static final long serialVersionUID = 1L;
 	//private List<Question> questions;
