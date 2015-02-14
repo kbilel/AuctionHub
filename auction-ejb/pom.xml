@@ -3,21 +3,7 @@
   <groupId>tn.esprit.auction</groupId>
   <artifactId>auction-ejb</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-   <packaging>ejb</packaging>
-  <dependencies>
-  <dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.11</version>
-		</dependency>
-		
-		<dependency>
-			<groupId>org.wildfly</groupId>
-			<artifactId>wildfly-ejb-client-bom</artifactId>
-			<version>9.0.0.Alpha1</version>
-			<type>pom</type>
-		</dependency>
-  
+   <packaging>ejb</packaging> <dependencies>
 <dependency>
   		<groupId>javax</groupId>
   		<artifactId>javaee-api</artifactId>
@@ -33,7 +19,7 @@
 
 	<build>
 		<finalName>${project.artifactId}</finalName>
-		<defaultGoal>clean install wildfly:deploy </defaultGoal>
+		<defaultGoal>clean install wildfly:deploy</defaultGoal>
 		<plugins>
 			<plugin>
 				<groupId>org.wildfly.plugins</groupId>
@@ -41,9 +27,9 @@
 				<version>1.0.2.Final</version>
 				<configuration>
 					<port>9997</port>
-					
-					<filename>${project.artifactId}.jar</filename>
+				<filename>${project.artifactId}.jar</filename>
 				</configuration>
+				
 			</plugin>
 			<plugin>
 				<artifactId>maven-ejb-plugin</artifactId>
@@ -54,4 +40,5 @@
 		</plugins>
 		
 	</build>
+
 </project>

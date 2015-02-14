@@ -62,7 +62,7 @@ public class Auction implements Serializable {
 	public void setAuctionEndDate(Date auctionEndDate) {
 		this.auctionEndDate = auctionEndDate;
 	}
-	@OneToMany(mappedBy="client")
+	@OneToMany(mappedBy="auction")
 	public List<Message> getMessages() {
 		return messages;
 	}
