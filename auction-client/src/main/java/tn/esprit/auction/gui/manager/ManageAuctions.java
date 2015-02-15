@@ -184,7 +184,7 @@ public class ManageAuctions extends JFrame {
 		contentPane.add(lblEnglishAuctionsTable);
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(81, 265, 555, 100);
+		scrollPane_1.setBounds(81, 265, 555, 86);
 		contentPane.add(scrollPane_1);
 		
 		table = new JTable();
@@ -196,20 +196,36 @@ public class ManageAuctions extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		btnNewButton.setBounds(5, 408, 159, 23);
+		btnNewButton.setBounds(5, 385, 190, 23);
 		contentPane.add(btnNewButton);
 		
-		JButton btnDeleteAuction = new JButton("Delete selected Auction");
-		btnDeleteAuction.addActionListener(new ActionListener() {
+		JButton btnNewButton_1 = new JButton("Add new Auction");
+		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				ConvertProductToAuction frame = new ConvertProductToAuction();
+				frame.setVisible(true);
 			}
 		});
-		btnDeleteAuction.setBounds(5, 385, 159, 23);
-		contentPane.add(btnDeleteAuction);
+		btnNewButton_1.setBounds(5, 362, 190, 23);
+		contentPane.add(btnNewButton_1);
 		
-		JLabel lblSelectAnAuction = new JLabel("Select an auction and then click the button !");
-		lblSelectAnAuction.setForeground(Color.RED);
-		lblSelectAnAuction.setBounds(174, 389, 454, 14);
-		contentPane.add(lblSelectAnAuction);
+		JLabel lblSelectAnAuction_1 = new JLabel("Select an auction to update and then click the button !");
+		lblSelectAnAuction_1.setForeground(new Color(255, 140, 0));
+		lblSelectAnAuction_1.setBounds(205, 389, 454, 14);
+		contentPane.add(lblSelectAnAuction_1);
+		
+		JLabel lblClickHereTo = new JLabel("Click here to convert a Product to an Auction !");
+		lblClickHereTo.setForeground(Color.GREEN);
+		lblClickHereTo.setBounds(205, 362, 454, 14);
+		contentPane.add(lblClickHereTo);
+		
+		JLabel label = new JLabel("Select an auction to delete and then click the button !");
+		label.setForeground(Color.RED);
+		label.setBounds(205, 414, 454, 14);
+		contentPane.add(label);
+		
+		JButton button = new JButton("Delete selected Auction");
+		button.setBounds(5, 408, 190, 23);
+		contentPane.add(button);
 	}
 }

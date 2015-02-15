@@ -27,6 +27,7 @@ public class Product implements Serializable {
 	private String imageUrl;
 	private static final long serialVersionUID = 1L;
 	private List<Review> reviews;
+	private Auction auction;
 
 	public Product() {
 		super();
@@ -95,6 +96,13 @@ public class Product implements Serializable {
 	}
 	public void setReviews(List<Review> reviews) {
 		this.reviews = reviews;
+	}
+	@OneToOne (mappedBy="product")
+	public Auction getAuction() {
+		return auction;
+	}
+	public void setAuction(Auction auction) {
+		this.auction = auction;
 	}
    
 }
