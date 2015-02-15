@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ejb.Remote;
 
 import tn.esprit.auction.domain.Auction;
+import tn.esprit.auction.domain.EnglishAuction;
 
 @Remote
 public interface AuctionServicesRemote {
@@ -13,4 +14,5 @@ public interface AuctionServicesRemote {
 	Boolean deleteAuction(Auction auction);
 	Auction findAuctionById(Integer idAuction);
 	List<Auction>findAllAuctions();
+	List<EnglishAuction>findAllEnglishAuctions();
 }

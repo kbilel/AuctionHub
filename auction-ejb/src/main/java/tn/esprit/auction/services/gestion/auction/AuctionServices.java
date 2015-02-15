@@ -9,6 +9,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import tn.esprit.auction.domain.Auction;
+import tn.esprit.auction.domain.EnglishAuction;
 
 /**
  * Session Bean implementation class AuctionServices
@@ -76,6 +77,15 @@ public class AuctionServices implements AuctionServicesRemote, AuctionServicesLo
 	public List<Auction> findAllAuctions() {
 		Query query=entityManager.createQuery("select a from Auction a ");
 		return query.getResultList();
+	}
+
+	@Override
+	public List<EnglishAuction> findAllEnglishAuctions() {
+		Query query=entityManager.createQuery("select a from EnglishAuction a ");
+		if (query.getResultList()!=null)
+		System.out.println("ejb find english auction is not null");
+		return query.getResultList();
+		
 	}
 
 }

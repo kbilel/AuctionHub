@@ -1,10 +1,13 @@
 package tn.esprit.auction;
 
+import java.util.List;
+
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
 import tn.esprit.auction.domain.Auction;
+import tn.esprit.auction.domain.EnglishAuction;
 import tn.esprit.auction.services.gestion.auction.AuctionServicesRemote;
 
 public class TestGestionAuction {
@@ -43,6 +46,13 @@ System.out.println("auction null");
 			System.out.println("Erreur ...delete");
 
 	}
+	public static void doFindAllEnglishAuction(){
+		List<EnglishAuction> englishAuctions= remote.findAllEnglishAuctions();
+		if (englishAuctions==null)
+			System.out.println("liste e a vide");
+		else
+			System.out.println(""+englishAuctions.size());
+	}
 	public static void main(String[] args) {
 		
 		
@@ -57,5 +67,6 @@ System.out.println("auction null");
 doAddAuction(remote);
 		//doUpdateAuction(remote);
 	//doDeleteAuction(remote);
+	//doFindAllEnglishAuction();
 	}
 }

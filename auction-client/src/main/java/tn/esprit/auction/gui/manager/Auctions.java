@@ -39,13 +39,17 @@ import java.awt.Toolkit;
 import java.awt.SystemColor;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.JScrollPane;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import javax.swing.JScrollPane;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.JScrollBar;
 
-public class EspaceManager extends JFrame {
-
+public class Auctions extends JFrame {
 	private JPanel contentPane;
+	private JTable table;
 
 	/**
 	 * Launch the application.
@@ -54,7 +58,7 @@ public class EspaceManager extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					EspaceManager frame = new EspaceManager();
+					ManageAuctions frame = new ManageAuctions();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -66,8 +70,8 @@ public class EspaceManager extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public EspaceManager() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(EspaceManager.class.getResource("/javax/swing/plaf/metal/icons/ocean/computer.gif")));
+	public Auctions() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(ManageAuctions.class.getResource("/javax/swing/plaf/metal/icons/ocean/computer.gif")));
 		setTitle("Auction");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 892, 494);
@@ -79,18 +83,18 @@ public class EspaceManager extends JFrame {
 		setJMenuBar(menuBar);
 		
 		JMenuItem mntmHome = new JMenuItem("Home");
-		mntmHome.setSelected(true);
-		menuBar.add(mntmHome);
-		
-		JMenuItem mntmAuctions = new JMenuItem("Auctions");
-		mntmAuctions.addMouseListener(new MouseAdapter() {
+		mntmHome.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Auctions auctions=new Auctions();
-				auctions.setVisible(true);
+				EspaceManager espaceManager=new EspaceManager();
+				espaceManager.setVisible(true);
 				setVisible(false);
 			}
 		});
+		menuBar.add(mntmHome);
+		
+		JMenuItem mntmAuctions = new JMenuItem("Auctions");
+		mntmAuctions.setSelected(true);
 		menuBar.add(mntmAuctions);
 		
 		JMenuItem mntmProducts = new JMenuItem("Products");
@@ -101,11 +105,9 @@ public class EspaceManager extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(5, 145, 875, 35);
-		contentPane.add(scrollPane);
+		scrollPane.setBounds(5, 144, 876, 32);
 		
 		JMenuBar menuBar_1 = new JMenuBar();
 		scrollPane.setViewportView(menuBar_1);
@@ -117,8 +119,8 @@ public class EspaceManager extends JFrame {
 		JMenuItem mntmMessage = new JMenuItem("Message");
 		menuBar_1.add(mntmMessage);
 		
-		JMenuItem mntmManageAuctions = new JMenuItem("Manage Auctions");
-		mntmManageAuctions.addMouseListener(new MouseAdapter() {
+		JMenuItem mntmManageAuctionss = new JMenuItem("Manage Auctions");
+		mntmManageAuctionss.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				ManageAuctions manageAuctions =new ManageAuctions();
@@ -127,15 +129,14 @@ public class EspaceManager extends JFrame {
 			}
 		});
 		
-		menuBar_1.add(mntmManageAuctions);
+		menuBar_1.add(mntmManageAuctionss);
 		
 		JMenuItem mntmManageOrders = new JMenuItem("Manage Order");
 		menuBar_1.add(mntmManageOrders);
 		
 		JPanel panel = new JPanel();
+		panel.setBounds(672, 187, 199, 258);
 		panel.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		panel.setBounds(667, 182, 199, 258);
-		contentPane.add(panel);
 		panel.setLayout(null);
 		
 		JLabel lblManager = new JLabel("Manager");
@@ -157,25 +158,37 @@ public class EspaceManager extends JFrame {
 				setVisible(false);
 			}
 		});
-		btnLogOut.setIcon(new ImageIcon(EspaceManager.class.getResource("/javax/swing/plaf/metal/icons/ocean/error.png")));
+		btnLogOut.setIcon(new ImageIcon(ManageAuctions.class.getResource("/javax/swing/plaf/metal/icons/ocean/error.png")));
 		btnLogOut.setBounds(68, 211, 121, 36);
 		panel.add(btnLogOut);
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(EspaceManager.class.getResource("/tn/esprit/auction/gui/manager/bid.png")));
-		lblNewLabel.setBounds(27, 0, 120, 116);
-		contentPane.add(lblNewLabel);
+		lblNewLabel.setBounds(32, 5, 120, 116);
+		lblNewLabel.setIcon(new ImageIcon(ManageAuctions.class.getResource("/tn/esprit/auction/gui/manager/bid.png")));
 		
 		JLabel lblISubscribe = new JLabel("Manager  Space");
+		lblISubscribe.setBounds(251, 41, 659, 74);
 		lblISubscribe.setBackground(Color.WHITE);
 		lblISubscribe.setForeground(Color.RED);
 		lblISubscribe.setFont(new Font("Segoe Script", Font.BOLD | Font.ITALIC, 40));
-		lblISubscribe.setBounds(246, 36, 659, 74);
-		contentPane.add(lblISubscribe);
 		
-		JLabel lblNewLabel_1 = new JLabel("Home");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 70));
-		lblNewLabel_1.setBounds(210, 240, 277, 130);
-		contentPane.add(lblNewLabel_1);
+		JLabel lblEnglishAuctionsTable = new JLabel("English Auctions Table :");
+		lblEnglishAuctionsTable.setBounds(235, 199, 249, 41);
+		lblEnglishAuctionsTable.setForeground(new Color(0, 0, 139));
+		lblEnglishAuctionsTable.setFont(new Font("Times New Roman", Font.BOLD, 20));
+		contentPane.setLayout(null);
+		contentPane.add(scrollPane);
+		contentPane.add(panel);
+		contentPane.add(lblNewLabel);
+		contentPane.add(lblISubscribe);
+		contentPane.add(lblEnglishAuctionsTable);
+		
+		JScrollPane scrollPane_1 = new JScrollPane();
+		scrollPane_1.setBounds(81, 265, 555, 100);
+		contentPane.add(scrollPane_1);
+		
+		table = new JTable();
+		scrollPane_1.setViewportView(table);
+		table.setModel(new TableEnglishAuctionModel());
 	}
 }

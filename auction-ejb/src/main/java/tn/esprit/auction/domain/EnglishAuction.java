@@ -14,7 +14,7 @@ import tn.esprit.auction.domain.Client;
  */
 @Entity
 @Table(name="t_english_auction")
-
+@DiscriminatorValue(value="English Auction")
 public class EnglishAuction extends Auction implements Serializable {
 
 	

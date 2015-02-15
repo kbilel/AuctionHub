@@ -103,6 +103,7 @@ public class Authentification extends JFrame {
 						EspaceManager manager=new EspaceManager();
 						manager.setVisible(true);
 					}
+					setVisible(false);
 				}
 				
 			}
@@ -110,5 +111,4 @@ public class Authentification extends JFrame {
 		btnLogin.setBounds(129, 88, 89, 23);
 		panel.add(btnLogin);
 	}
-
 }
