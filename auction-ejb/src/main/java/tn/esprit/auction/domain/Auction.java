@@ -24,6 +24,7 @@ public class Auction implements Serializable {
 	private Date auctionEndDate;
 	private static final long serialVersionUID = 1L;
 	private List<Message> messages;
+	private Product  product;
 
 	public Auction() {
 		super();
@@ -70,5 +71,13 @@ public class Auction implements Serializable {
 	}
 	public void setMessages(List<Message> message) {
 		this.messages = message;
+	}
+	@OneToOne
+	@JoinColumn(name="id_product")
+	public Product getProduct() {
+		return product;
+	}
+	public void setProduct(Product product) {
+		this.product = product;
 	}
 }
