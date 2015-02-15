@@ -52,7 +52,6 @@ import java.awt.List;
 public class EspaceDelivryMana extends JFrame {
 
 	private JPanel contentPane;
-	private JTable table;
 
 	/**
 	 * Launch the application.
@@ -183,21 +182,6 @@ public class EspaceDelivryMana extends JFrame {
 		contentPane.add(lblNewLabel);
 		contentPane.add(lblISubscribe);
 		contentPane.add(lblEnglishAuctionsTable);
-		
-		table = new JTable();
-		table.setBackground(new Color(176, 224, 230));
-		table.setModel(new DefaultTableModel(
-			new Object[][] {
-			},
-			new String[] {
-				"Id Order", "Adresse", "Id Client"
-			}
-		));
-		table.getColumnModel().getColumn(0).setPreferredWidth(54);
-		table.setBounds(96, 251, 388, 103);
-		contentPane.add(table);
 	}
-	public JTable getTable() {
-		return table;
-	}
+	
 }
