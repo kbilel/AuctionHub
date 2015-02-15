@@ -14,6 +14,7 @@ import java.awt.Font;
 
 import javax.swing.JLabel;
 
+
 //import com.jgoodies.forms.factories.DefaultComponentFactory;
 
 import javax.swing.SwingConstants;
@@ -45,10 +46,13 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.JInternalFrame;
+import java.awt.List;
 
 public class EspaceDelivryMana extends JFrame {
 
 	private JPanel contentPane;
+	private JTable table;
 
 	/**
 	 * Launch the application.
@@ -179,5 +183,21 @@ public class EspaceDelivryMana extends JFrame {
 		contentPane.add(lblNewLabel);
 		contentPane.add(lblISubscribe);
 		contentPane.add(lblEnglishAuctionsTable);
+		
+		table = new JTable();
+		table.setBackground(new Color(176, 224, 230));
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"Id Order", "Adresse", "Id Client"
+			}
+		));
+		table.getColumnModel().getColumn(0).setPreferredWidth(54);
+		table.setBounds(96, 251, 388, 103);
+		contentPane.add(table);
+	}
+	public JTable getTable() {
+		return table;
 	}
 }
