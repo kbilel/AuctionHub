@@ -52,6 +52,7 @@ import java.awt.List;
 public class EspaceDelivryMana extends JFrame {
 
 	private JPanel contentPane;
+	private JTable table;
 
 	/**
 	 * Launch the application.
@@ -134,7 +135,7 @@ public class EspaceDelivryMana extends JFrame {
 		menuBar_1.add(mntmManageOrders);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(672, 187, 199, 258);
+		panel.setBounds(681, 174, 199, 258);
 		panel.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		panel.setLayout(null);
 		
@@ -182,6 +183,50 @@ public class EspaceDelivryMana extends JFrame {
 		contentPane.add(lblNewLabel);
 		contentPane.add(lblISubscribe);
 		contentPane.add(lblEnglishAuctionsTable);
+		
+		String[] columnNames = {"First Name",
+				"Last Name",
+				"Sport",
+				"# of Years",
+				"Vegetarian"};
+
+				Object[][] data = {
+				{"Kathy", "Smith","Snowboarding", new Integer(5), new Boolean(false)},
+				{"John", "Doe", "Rowing", new Integer(3), new Boolean(true)},
+				{"Sue", "Black", "Knitting", new Integer(2), new Boolean(false)},
+				{"Jane", "White", "Speed reading", new Integer(20), new Boolean(true)},
+				{"Joe", "Brown", "Pool", new Integer(10), new Boolean(false)}
+				};	
+		
+		JScrollPane scrollPane_1 = new JScrollPane();
+		scrollPane_1.setBounds(77, 263, 533, 118);
+		contentPane.add(scrollPane_1);
+
+			
+		
+		table = new JTable(data, columnNames);
+		scrollPane_1.setViewportView(table);
+		table.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		table.setFont(new Font("Trebuchet MS", Font.PLAIN, 13));
+		table.setForeground(new Color(0, 0, 0));
+		table.setBackground(new Color(0, 139, 139));
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+				{"1", "auction", "143", "ariana cit\u00E9 nasim", "delivred"},
+				{"2", "product", "Rowing", "nabeul", "delivred"},
+				{"712", "product", "Knitting", "tunis centre vile", "Not delivred"},
+				{"265", "auction", "Speed reading", "ariana", "delivred"},
+				{"175", "auction", "Pool", new Integer(10), "Not delivred"},
+			},
+			new String[] {
+				"Id item", "Type", "Id Client", "adress", "state"
+			}
+		));
+//panel.add(new JScrollPane(table));
+		
+		JButton btnNewButton = new JButton("Take this order");
+		btnNewButton.setBackground(UIManager.getColor("CheckBox.light"));
+		btnNewButton.setBounds(280, 392, 131, 29);
+		contentPane.add(btnNewButton);
 	}
-	
 }
