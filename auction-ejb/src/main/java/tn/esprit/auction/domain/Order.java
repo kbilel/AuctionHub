@@ -20,7 +20,7 @@ import tn.esprit.auction.domain.Product;
 public class Order implements Serializable {
 
 	
-	private OrderPK orderPK;
+	/* ajouter annotation @embedded (à verifier)*/private OrderPK orderPK;
 	private Client client;
 	private Product produit;
 	private Date dateLimit;
