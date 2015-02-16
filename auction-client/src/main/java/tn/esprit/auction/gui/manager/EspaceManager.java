@@ -14,7 +14,7 @@ import java.awt.Font;
 
 import javax.swing.JLabel;
 
-import com.jgoodies.forms.factories.DefaultComponentFactory;
+//import com.jgoodies.forms.factories.DefaultComponentFactory;
 
 import javax.swing.SwingConstants;
 import javax.swing.JToggleButton;

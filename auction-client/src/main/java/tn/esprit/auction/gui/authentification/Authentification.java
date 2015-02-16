@@ -1,38 +1,52 @@
 package tn.esprit.auction.gui.authentification;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.EventQueue;
-import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+
+import java.awt.Font;
+
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
 import javax.swing.border.LineBorder;
 
 import tn.esprit.auction.delegate.GestionUserDelegate;
 import tn.esprit.auction.domain.Client;
 import tn.esprit.auction.domain.Manager;
 import tn.esprit.auction.domain.User;
-import tn.esprit.auction.gui.authentification.Authentification;
 import tn.esprit.auction.gui.client.EspaceClient;
+import tn.esprit.auction.gui.client.SubscribingSpace;
 import tn.esprit.auction.gui.manager.EspaceManager;
 
+import java.awt.Color;
 
 public class Authentification extends JFrame {
-
+ private static User userConnected;
 	private JPanel contentPane;
-	private JTextField login;
-	private JTextField pwd;
-	
+	private JTextField tfLogin;
+	private JTextField tfPassword;
+
 	/**
 	 * Launch the application.
 	 */
+	public static User getUser()
+	{
+		return userConnected;
+	}
+	public static void setUser(User user)
+	{
+		 userConnected=user;
+	}
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -50,65 +64,93 @@ public class Authentification extends JFrame {
 	 * Create the frame.
 	 */
 	public Authentification() {
-		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 543, 582);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblAuthentification = new JLabel("Authentification");
-		lblAuthentification.setFont(new Font("Times New Roman", Font.ITALIC, 50));
-		lblAuthentification.setBounds(56, 28, 350, 45);
-		contentPane.add(lblAuthentification);
-		
-		JPanel panel = new JPanel();
-		panel.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel.setBounds(42, 84, 364, 116);
+		final JPanel panel = new JPanel();
+		panel.setBackground(new Color(204, 204, 153));
+		panel.setBorder(new LineBorder(new Color(0, 0, 0), 3));
+		panel.setBounds(5, 5, 522, 539);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		JLabel lblLogin = new JLabel("Login:");
-		lblLogin.setBounds(21, 23, 46, 14);
+		JLabel lblAuthentification = new JLabel("    Authentification");
+		lblAuthentification.setFont(new Font("Tahoma", Font.BOLD, 45));
+		lblAuthentification.setBounds(10, 11, 502, 55);
+		panel.add(lblAuthentification);
+		
+		JLabel lblLogin = new JLabel("Login :");
+		lblLogin.setFont(new Font("Tahoma", Font.BOLD, 20));
+		lblLogin.setBounds(77, 159, 118, 55);
 		panel.add(lblLogin);
 		
-		JLabel lblPwd = new JLabel("pwd");
-		lblPwd.setBounds(21, 60, 46, 14);
-		panel.add(lblPwd);
+		JLabel lblPassword = new JLabel("password :");
+		lblPassword.setFont(new Font("Tahoma", Font.BOLD, 20));
+		lblPassword.setBounds(77, 242, 145, 55);
+		panel.add(lblPassword);
 		
-		login = new JTextField();
-		login.setBounds(107, 20, 185, 20);
-		panel.add(login);
-		login.setColumns(10);
+		tfLogin = new JTextField();
+		tfLogin.setBounds(240, 159, 225, 41);
+		panel.add(tfLogin);
+		tfLogin.setColumns(10);
 		
-		pwd = new JTextField();
-		pwd.setBounds(107, 57, 185, 20);
-		panel.add(pwd);
-		pwd.setColumns(10);
+		tfPassword = new JTextField();
+		tfPassword.setColumns(10);
+		tfPassword.setBounds(240, 242, 225, 41);
+		panel.add(tfPassword);
 		
-		JButton btnLogin = new JButton("Login");
-		btnLogin.addActionListener(new ActionListener() {
+		JButton btnConnect = new JButton("Connect");
+		btnConnect.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				User user=GestionUserDelegate.doAuthentificate(login.getText(), pwd.getText());
-				System.out.println("pwd"+user.getPassword());
-				if(user!=null){
-				
-					if(user instanceof Client){
-						EspaceClient client=new EspaceClient();
-						client.setVisible(true);
-						
-					}else
-						if(user instanceof Manager){
-						EspaceManager manager=new EspaceManager();
-						manager.setVisible(true);
-					}
-				}
+				 String username=tfLogin.getText();
+			        String pwd= new String(tfPassword.getText());
+			        if(GestionUserDelegate.doAuthentificate(username, pwd)!=null)
+				 {
+			        	
+					 userConnected=GestionUserDelegate.doAuthentificate(username, pwd);
+					 if(userConnected instanceof Client)
+						{
+						 new EspaceClient().setVisible(true);
+						 setVisible(false);
+						}
+					 else if(userConnected instanceof Manager)
+					 {
+						 new EspaceManager().setVisible(true);
+						 setVisible(false);
+					 }
+					 
+				 }
+			        else 
+			        {
+			        	JOptionPane.showMessageDialog(panel, "ouuupss try again ");
+			        }
+					 
 				
 			}
 		});
-		btnLogin.setBounds(129, 88, 89, 23);
-		panel.add(btnLogin);
+		btnConnect.setFont(new Font("Tahoma", Font.BOLD, 15));
+		btnConnect.setBounds(190, 323, 118, 34);
+		panel.add(btnConnect);
+		
+		JButton btnSubscribe = new JButton("subscribe");
+		btnSubscribe.setFont(new Font("Tahoma", Font.BOLD, 15));
+		btnSubscribe.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				 new SubscribingSpace().setVisible(true);
+				 setVisible(false);
+				
+			}
+		});
+		btnSubscribe.setBounds(190, 368, 118, 34);
+		panel.add(btnSubscribe);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(Authentification.class.getResource("/tn/esprit/auction/gui/authentification/bid1.gif")));
+		lblNewLabel.setBounds(312, 412, 200, 109);
+		panel.add(lblNewLabel);
 	}
-
 }
