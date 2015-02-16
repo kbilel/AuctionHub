@@ -9,6 +9,7 @@
 		<class>tn.esprit.auction.domain.BidPK</class>
 		<class>tn.esprit.auction.domain.BookKeeper</class>
 		<class>tn.esprit.auction.domain.Client</class>
+		<class>tn.esprit.auction.domain.Configuration</class>
 		<class>tn.esprit.auction.domain.DeliveryMan</class>
 		<class>tn.esprit.auction.domain.DutchAuction</class>
 		<class>tn.esprit.auction.domain.Employee</class>

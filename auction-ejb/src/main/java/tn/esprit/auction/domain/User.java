@@ -24,7 +24,7 @@ public class User implements Serializable {
 	private String fullName;
 	private String email;
 	private String adress;
-	private Byte[] imageByte;
+	private byte[] imageByte;
 	private String imageUrl;
 	private static final long serialVersionUID = 1L;
 
@@ -78,10 +78,10 @@ public class User implements Serializable {
 		this.adress = adress;
 	}
 	@Column (name="image_byte")
-	public Byte[] getImageByte() {
+	public byte[] getImageByte() {
 		return imageByte;
 	}
-	public void setImageByte(Byte[] imageByte) {
+	public void setImageByte(byte[] imageByte) {
 		this.imageByte = imageByte;
 	}
 	@Column (name="image_url")

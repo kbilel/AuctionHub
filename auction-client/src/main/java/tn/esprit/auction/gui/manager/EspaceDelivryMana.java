@@ -124,6 +124,7 @@ public class EspaceDelivryMana extends JFrame {
 		menuBar_1.setFont(new Font("Times New Roman", Font.PLAIN, 12));
 		
 		JMenuItem mntmMyProfile = new JMenuItem("My Profile");
+		
 		menuBar_1.add(mntmMyProfile);
 		
 		JMenuItem mntmMessage = new JMenuItem("Message(5)");

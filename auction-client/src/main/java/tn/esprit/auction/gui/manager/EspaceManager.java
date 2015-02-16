@@ -14,7 +14,11 @@ import java.awt.Font;
 
 import javax.swing.JLabel;
 
+<<<<<<< HEAD
 // il faut supprimer cette import: import com.jgoodies.forms.factories.DefaultComponentFactory;
+=======
+//import com.jgoodies.forms.factories.DefaultComponentFactory;
+>>>>>>> branch 'master' of http://git.esprit.tn:2015/TuteurPdev/esprit1415b3t6.git
 
 import javax.swing.SwingConstants;
 import javax.swing.JToggleButton;
